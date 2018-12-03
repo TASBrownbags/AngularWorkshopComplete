@@ -3,20 +3,12 @@
 
 <div class = "container">
   <div class = "hero-value">
-  <label for= "name">Hero name: </label>
-  <input id="name" class = "form-control" #heroName />
-</div>
-<div class = "hero-value">
-  <label for= "name">Birthday: </label>
-  <input id="name" class = "form-control" #heroName />
-</div>
-<div class = "hero-value">
-  <label for= "name">Power Level: </label>
-  <input id="name" class = "form-control" #heroName />
-</div>
+    <label for= "name">Hero name: </label>
+    <input id="name" name ="name" class = "form-control" #heroName />
+  </div>
   
   
-  <button class = "float-right" (click)="add(heroName.value); heroName.value=''">
+  <button class = "float-right" (click)="add(heroName.value); heroName.value='';">
     add
   </button>
 </div>
