@@ -6,6 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { Hero } from './hero';
 import { MessageService } from './message.service';
+import { PowerLevel } from './powerLevel';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -91,6 +92,16 @@ export class HeroService {
       tap(_ => this.log(`updated hero id=${hero.id}`)),
       catchError(this.handleError<any>('updateHero'))
     );
+  }
+
+  getPowerLevels() : PowerLevel[] {
+    const powerLevels = [
+      {id: 1, name: "Super Strong"},
+      {id: 2, name: "Over 9000"},
+      {id: 3, name: "Weak"}
+    ];
+
+    return powerLevels;
   }
 
   /**

@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { Hero }         from '../hero';
 import { HeroService }  from '../hero.service';
+import { PowerLevel } from '../powerLevel';
 
 @Component({
   selector: 'app-hero-detail',
@@ -12,6 +13,7 @@ import { HeroService }  from '../hero.service';
 })
 export class HeroDetailComponent implements OnInit {
   @Input() hero: Hero;
+  PowerLevels: PowerLevel[];
 
   constructor(
     private route: ActivatedRoute,
@@ -21,6 +23,7 @@ export class HeroDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHero();
+    this.PowerLevels = this.heroService.getPowerLevels();
   }
 
   getHero(): void {

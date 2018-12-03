@@ -1,11 +1,23 @@
 <div *ngIf="hero">
   <h2>{{hero.name | uppercase}} Details</h2>
   <div><span>id: </span>{{hero.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="hero.name" placeholder="name"/>
-    </label>
-  </div>
-  <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
+  <div class = "container">
+    <div class = "hero-value">
+      <label for= "name">Hero name: </label>
+      <input id="name" name ="name" class = "form-control" #heroName  [(ngModel)] = "hero.name" />
+    </div>
+    <div class = "hero-value">
+      <label for= "birthday">Birthday: </label>
+      <input id="birthday" name = "birthday" class = "form-control" #heroBirthday  [(ngModel)] = "hero.birthday" />
+    </div>
+    <div class = "hero-value">
+      <label for= "powerLevel">Power Level: </label>
+      <select id="powerLevel" name = "powerLevel" class = "form-control" #heroPowerLevel [(ngModel)] = "hero.powerLevelID">
+      <option [ngValue] = "null">Select Power Level</option>
+      <option *ngFor = "let level of PowerLevels" [ngValue] = "level.id">{{level.name}}</option>
+      </select>
+    </div>
+  <button class = "float-right" (click)="goBack()">go back</button>
+  <button class = "float-right" (click)="save()">save</button>
+</div>
 </div>
