@@ -60,15 +60,22 @@ button {
   font-family: Arial;
 }
 
-button:hover {
-  background-color: #cfd8dc;
-}
 
 button.delete {
   position: relative;
-  left: 194px;
-  top: -32px;
-  background-color: gray !important;
+  background-color:  darkgray !important;
   color: white;
+}
+
+.delete:hover {
+  background-color: black;
+}
+
+.hero-value {
+  margin: 5px;
+}
+
+.float-right{
+  float: right;
 }
 

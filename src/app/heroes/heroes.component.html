@@ -1,21 +1,42 @@
-<h2>My Heroes</h2>
+<div class = "container">
+  <h2>My Heroes</h2>
 
-<div>
-  <label>Hero name:
-    <input #heroName />
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(heroName.value); heroName.value=''">
+<div class = "container">
+  <div class = "hero-value">
+  <label for= "name">Hero name: </label>
+  <input id="name" class = "form-control" #heroName />
+</div>
+<div class = "hero-value">
+  <label for= "name">Birthday: </label>
+  <input id="name" class = "form-control" #heroName />
+</div>
+<div class = "hero-value">
+  <label for= "name">Power Level: </label>
+  <input id="name" class = "form-control" #heroName />
+</div>
+  
+  
+  <button class = "float-right" (click)="add(heroName.value); heroName.value=''">
     add
   </button>
 </div>
-
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </a>
-    <button class="delete" title="delete hero"
-      (click)="delete(hero)">x</button>
-  </li>
-</ul>
+  <table class = "table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Delete</th>
+    </tr>
+    <tr *ngFor="let hero of heroes">
+      <td scope = "col" class="badge">{{hero.id}}</td>
+      <td scope = "col">
+        <a routerLink="/detail/{{hero.id}}">
+          {{hero.name}}
+        </a>
+      </td>
+      <td scope ="col">
+          <button type = "button" class = "delete" title="delete hero"
+          (click)="delete(hero)">x</button>
+      </td>
+    </tr>
+  </table>
+</div>
