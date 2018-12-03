@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 import { PowerLevel } from '../powerLevel';
+import { DemoService } from '../services/demo.service';
 
 @Component({
   selector: 'app-heroes',
@@ -12,21 +13,21 @@ import { PowerLevel } from '../powerLevel';
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
 
-  constructor(private heroService: HeroService) { }
+  constructor(private demoService: DemoService) { }
 
   ngOnInit() {
     this.getHeroes();
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes()
+    this.demoService.getHeroes()
     .subscribe(heroes => this.heroes = heroes);
   }
 
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
-    this.heroService.addHero({ name } as Hero)
+    this.demoService.addHero({ name } as Hero)
       .subscribe(hero => {
         this.heroes.push(hero);
       });
@@ -34,7 +35,7 @@ export class HeroesComponent implements OnInit {
 
   delete(hero: Hero): void {
     this.heroes = this.heroes.filter(h => h !== hero);
-    this.heroService.deleteHero(hero).subscribe();
+    this.demoService.deleteHero(hero).subscribe();
   }
 
 }
