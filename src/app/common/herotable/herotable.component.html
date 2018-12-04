@@ -1,0 +1,19 @@
+<table class = "table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Delete</th>
+    </tr>
+    <tr *ngFor="let hero of heroes">
+      <td scope = "col" class="badge">{{hero.id}}</td>
+      <td scope = "col">
+        <a routerLink="/detail/{{hero.id}}">
+          {{hero.name}}
+        </a>
+      </td>
+      <td scope ="col">
+          <button type = "button" class = "delete" title="delete hero"
+          (click)="deleteHero(hero)">x</button>
+      </td>
+    </tr>
+  </table>
