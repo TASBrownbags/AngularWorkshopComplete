@@ -13,7 +13,7 @@ import { MessageService } from '../message.service';
 })
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
-
+  newHeroName: string;
   constructor(private demoService: DemoService) { }
 
   ngOnInit() {
@@ -31,6 +31,7 @@ export class HeroesComponent implements OnInit {
     this.demoService.addHero({ name } as Hero)
       .subscribe(hero => {
         this.heroes.push(hero);
+        this.newHeroName = '';
       }, error => {
         console.log(error)
       });

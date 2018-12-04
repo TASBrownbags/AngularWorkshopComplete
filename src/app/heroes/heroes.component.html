@@ -2,15 +2,18 @@
   <h2>My Heroes</h2>
 
 <div class = "container">
-  <div class = "hero-value">
-    <label for= "name">Hero name: </label>
-    <input id="name" name ="name" class = "form-control" #heroName />
-  </div>
-  
-  
-  <button class = "float-right" (click)="add(heroName.value); heroName.value='';">
-    add
-  </button>
+  <form #heroForm = "ngForm">
+    <div class = "hero-value">
+      <label for= "name">Hero name: </label>
+      <input required id="name" name ="name" class = "form-control" #heroName = "ngModel" [(ngModel)]="newHeroName" />
+    </div>      
+    <div class="alert alert-danger" *ngIf = "heroName.invalid && heroName.touched">
+      <span *ngIf = "heroName.errors.required">Name is a required field</span>
+    </div>
+    <button class = "float-right" [disabled] = "heroForm.invalid" (click)="add(newHeroName)">
+      add
+    </button>
+  </form>
 </div>
   <app-herotable [heroes] = "heroes" (Delete) = "delete($event)"></app-herotable>
 </div>

@@ -16,7 +16,6 @@ export class HerotableComponent implements OnInit {
   }
 
   deleteHero (hero: Hero) {
-    console.log(hero);
     this.Delete.emit(hero);
   }
 }
