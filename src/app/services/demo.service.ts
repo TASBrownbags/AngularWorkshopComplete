@@ -34,8 +34,8 @@ export class DemoService {
     return this.http.put(this.heroesUrl, hero, httpOptions);
   }
 
-  addError (hero: Hero): Observable<Hero> {
-    return throwError(`Failed to add hero: '${hero.name}'`);
+  addError (hero: Hero): Observable<any> {
+    return this.http.put(this.heroesUrl + 'hi', hero, httpOptions);
   }
 }
 

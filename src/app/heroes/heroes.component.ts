@@ -14,7 +14,7 @@ import { MessageService } from '../message.service';
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
 
-  constructor(private demoService: DemoService, private messageService: MessageService) { }
+  constructor(private demoService: DemoService) { }
 
   ngOnInit() {
     this.getHeroes();
@@ -31,7 +31,9 @@ export class HeroesComponent implements OnInit {
     this.demoService.addHero({ name } as Hero)
       .subscribe(hero => {
         this.heroes.push(hero);
-      }, error => this.messageService.add(error));
+      }, error => {
+        console.log(error)
+      });
   }
 
   delete(hero: Hero): void {
