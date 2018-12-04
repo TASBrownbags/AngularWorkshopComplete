@@ -4,6 +4,7 @@ import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 import { PowerLevel } from '../powerLevel';
 import { DemoService } from '../services/demo.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-heroes',
@@ -13,7 +14,7 @@ import { DemoService } from '../services/demo.service';
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
 
-  constructor(private demoService: DemoService) { }
+  constructor(private demoService: DemoService, private messageService: MessageService) { }
 
   ngOnInit() {
     this.getHeroes();
@@ -30,7 +31,7 @@ export class HeroesComponent implements OnInit {
     this.demoService.addHero({ name } as Hero)
       .subscribe(hero => {
         this.heroes.push(hero);
-      });
+      }, error => this.messageService.add(error));
   }
 
   delete(hero: Hero): void {

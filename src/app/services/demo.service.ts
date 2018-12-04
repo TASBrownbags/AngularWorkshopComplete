@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Hero } from '../hero';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -32,6 +32,10 @@ export class DemoService {
 
   updateHero (hero: Hero): Observable<any> {
     return this.http.put(this.heroesUrl, hero, httpOptions);
+  }
+
+  addError (hero: Hero): Observable<Hero> {
+    return throwError(`Failed to add hero: '${hero.name}'`);
   }
 }
 
